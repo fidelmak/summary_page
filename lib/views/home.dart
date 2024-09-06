@@ -115,6 +115,7 @@ class _HomePageState extends ConsumerState<HomePage>
     }
   }
 
+  final fixed = 5000;
   @override
   Widget build(BuildContext context) {
     final rewardsSummary = ref.watch(rewardsSummaryProvider);
@@ -139,7 +140,7 @@ class _HomePageState extends ConsumerState<HomePage>
               child: Column(
                 children: [
                   Text(
-                    "\$${rewardsSummary.rewardsSummary.currentBalance}",
+                    "\$${fixed}",
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                   Text(
