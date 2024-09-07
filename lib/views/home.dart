@@ -46,15 +46,17 @@ class _HomePageState extends ConsumerState<HomePage>
       return 'Good Night';
     }
   }
+  // function to cash back
 
   // Function to claim reward and update providers
   void claimReward(String bookingName) {
     final rewardsSummaryNotifier = ref.read(rewardsSummaryProvider.notifier);
-    final unclaimedBookings = ref.read(UnclaimedBookingProvider);
+    final unclaimedBookingNotifier =
+        ref.read(UnclaimedBookingProvider.notifier);
     final bookingHistoryNotifier = ref.read(bookingProvider.notifier);
 
     // Find the unclaimed booking by name
-    final unclaimedBooking = unclaimedBookings.firstWhere(
+    final unclaimedBooking = ref.read(UnclaimedBookingProvider).firstWhere(
       (booking) => booking["description"] == bookingName,
       orElse: () {
         // Show SnackBar if no booking is found
@@ -73,7 +75,6 @@ class _HomePageState extends ConsumerState<HomePage>
       final int price = int.parse(unclaimedBooking["price"]);
 
       // Update total rewards in the rewardsSummaryProvider
-      // Update rewardsSummaryNotifier state
       rewardsSummaryNotifier.state = rewardsSummaryNotifier.state.copyWith(
         rewardsSummary: rewardsSummaryNotifier.state.rewardsSummary.copyWith(
           totalRewards:
@@ -88,7 +89,10 @@ class _HomePageState extends ConsumerState<HomePage>
         ),
       );
 
-// Show SnackBar after the state is updated
+      // Remove the claimed booking from UnclaimedBookingProvider
+      unclaimedBookingNotifier.removeBooking(bookingName);
+
+      // Show SnackBar after the state is updated
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Successfully claimed $bookingName'),
@@ -96,32 +100,67 @@ class _HomePageState extends ConsumerState<HomePage>
         ),
       );
 
-      // Remove the claimed booking from UnclaimedBookingProvider
-      // Implement a method to remove booking if necessary
-      // Example: unclaimedBookingNotifier.removeBooking(bookingName);
-
       // Add the claimed booking to RewardHistory
-      final formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
-
       bookingHistoryNotifier.state = [
         ...bookingHistoryNotifier.state,
         {
           "description": unclaimedBooking["description"],
           "price": price,
-          "date": formattedDate.toString(),
+          "date": DateFormat('yyyy-MM-dd').format(DateTime.now()).toString(),
           "currency": unclaimedBooking["currency"],
         }
       ];
     }
   }
 
-  final fixed = 5000;
+  var fixed = 5000;
+
   @override
   Widget build(BuildContext context) {
     final rewardsSummary = ref.watch(rewardsSummaryProvider);
     final bookings = ref.watch(bookingProvider);
     final unclaimedBookings = ref.watch(UnclaimedBookingProvider);
     var currentReward = rewardsSummary.rewardsSummary.totalRewards;
+    var currentRewardx = currentReward;
+    void cashBack() {
+      setState(() {
+        fixed += currentReward;
+
+        final rewardsSummaryNotifier =
+            ref.read(rewardsSummaryProvider.notifier);
+
+        // Reset the total rewards in the provider
+        rewardsSummaryNotifier.state = rewardsSummaryNotifier.state.copyWith(
+          rewardsSummary: rewardsSummaryNotifier.state.rewardsSummary.copyWith(
+            totalRewards: 0, // Reset total rewards
+            currentBalance:
+                rewardsSummaryNotifier.state.rewardsSummary.currentBalance,
+            recentTransactions:
+                rewardsSummaryNotifier.state.rewardsSummary.recentTransactions,
+          ),
+        );
+      });
+    }
+
+    void cashBackWithPromo() {
+      setState(() {
+        fixed += currentReward * 2;
+
+        final rewardsSummaryNotifier =
+            ref.read(rewardsSummaryProvider.notifier);
+
+        // Reset the total rewards in the provider
+        rewardsSummaryNotifier.state = rewardsSummaryNotifier.state.copyWith(
+          rewardsSummary: rewardsSummaryNotifier.state.rewardsSummary.copyWith(
+            totalRewards: 0, // Reset total rewards
+            currentBalance:
+                rewardsSummaryNotifier.state.rewardsSummary.currentBalance,
+            recentTransactions:
+                rewardsSummaryNotifier.state.rewardsSummary.recentTransactions,
+          ),
+        );
+      });
+    }
 
     final screenSize = MediaQuery.of(context).size;
     return SafeArea(
@@ -175,7 +214,7 @@ class _HomePageState extends ConsumerState<HomePage>
                     Container(
                         height: 150,
                         child: CustomCard(
-                            text1: "\$${currentReward}",
+                            text1: "\$${currentRewardx}",
                             text2: "Reward Balance")),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -203,22 +242,69 @@ class _HomePageState extends ConsumerState<HomePage>
                         itemBuilder: (context, index) {
                           final booking = unclaimedBookings[index];
 
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal:
-                                    8.0), // Add padding between the items
-                            child: CustomCard2(
-                              text1: "\$${booking["price"]}",
-                              text2: booking["date"],
-                              press: () => claimReward(booking["description"]),
-                              name: booking["description"],
-                            ),
-                          );
+                          if (unclaimedBookings.isNotEmpty) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal:
+                                      8.0), // Add padding between the items
+                              child: CustomCard2(
+                                text1: "\$${booking["price"]}",
+                                text2: booking["date"],
+                                press: () =>
+                                    claimReward(booking["description"]),
+                                name: booking["description"],
+                              ),
+                            );
+                          } else {
+                            return Center(
+                                child:
+                                    Text("You Have Successfully Claimed All"));
+                          }
                         },
                       ),
                     ),
                     SizedBox(
                       height: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: screenSize.width / 3,
+                            height: screenSize.height / 12,
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: TextButton(
+                              onPressed: () {
+                                cashBack();
+                              },
+                              child: Text("Cash Back",
+                                  style: TextStyle(color: Colors.white)),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Container(
+                            width: screenSize.width / 3,
+                            height: screenSize.height / 12,
+                            decoration: BoxDecoration(
+                                color: Colors.black54,
+                                borderRadius: BorderRadius.circular(8)),
+                            child: TextButton(
+                                onPressed: () {
+                                  cashBackWithPromo();
+                                },
+                                child: Text(
+                                  "Promo cash",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          )
+                        ],
+                      ),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -270,7 +356,9 @@ class _HomePageState extends ConsumerState<HomePage>
         ),
         bottomNavigationBar: CustomBottomNavBar(
           currentIndex: _selectedIndex,
-          onTap: (int value) {},
+          onTap: (int value) {
+            _onItemTapped(value); // Update the selected tab
+          },
         ),
       ),
     );
