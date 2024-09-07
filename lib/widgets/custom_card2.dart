@@ -6,11 +6,12 @@ class CustomCard2 extends StatelessWidget {
   final String name;
   final VoidCallback press;
 
-  CustomCard2(
-      {required this.text1,
-      required this.text2,
-      required this.press,
-      required this.name});
+  CustomCard2({
+    required this.text1,
+    required this.text2,
+    required this.press,
+    required this.name,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +39,7 @@ class CustomCard2 extends StatelessWidget {
                   child: ClipOval(
                     child: Image.asset(
                       'assets/images/money.jpeg',
-                      fit: BoxFit
-                          .cover, // To ensure the image fits the container
+                      fit: BoxFit.cover, // Ensure the image fits the container
                     ),
                   ),
                 ),
@@ -78,35 +78,32 @@ class CustomCard2 extends StatelessWidget {
                       color: Colors.white,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
-                )
+                ),
               ],
             ),
-            //////
             SizedBox(
               height: 20,
             ),
-
             Container(
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(0),
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(18),
+              ),
+              child: TextButton(
+                onPressed: press,
+                child: Center(
+                  child: Text(
+                    "Claim",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.normal),
+                  ),
                 ),
-                child: Expanded(
-                  child: TextButton(
-                      onPressed: press,
-                      child: Center(
-                        child: Text(
-                          "claim",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.normal),
-                        ),
-                      )),
-                )),
+              ),
+            ),
           ],
-          ///////////
         ),
       ),
     );
