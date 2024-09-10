@@ -22,7 +22,7 @@ class _CustomCardState extends State<CustomCard>
       duration: Duration(seconds: 3), // Adjusted duration to fit your progress
     );
 
-    _animation = Tween<double>(begin: 0, end: 0.96).animate(_controller)
+    _animation = Tween<double>(begin: 0, end: 0.66).animate(_controller)
       ..addListener(() {
         setState(() {});
       });
