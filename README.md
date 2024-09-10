@@ -12,6 +12,10 @@ The **Summary App** is a rewards tracking application where users can manage unc
 - **Responsive Design**: Optimized for mobile devices using Flutter's `ScreenUtil` for responsive layouts.
 - **Snackbars**: Instant feedback is provided when users successfully claim rewards using Snackbars.
 
+
+## Download App (APK) version here 
+[Download APK](https://drive.google.com/file/d/1HmpWq4Uy8FpVb6uOp7beMd7rn84S7keL/view?usp=sharing)
+
 ## Installation
 
 To run this app locally, follow these steps:
