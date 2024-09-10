@@ -95,6 +95,7 @@ class _HomePageState extends ConsumerState<HomePage>
       // Show SnackBar after the state is updated
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
+          backgroundColor: Colors.green,
           content: Text('Successfully claimed $bookingName'),
           duration: Duration(seconds: 2), // Duration of the SnackBar
         ),
@@ -140,6 +141,13 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         );
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('Successfully claimed Cash '),
+          duration: Duration(seconds: 2), // Duration of the SnackBar
+        ),
+      );
     }
 
     void cashBackWithPromo() {
@@ -160,6 +168,13 @@ class _HomePageState extends ConsumerState<HomePage>
           ),
         );
       });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('Successfully claimed with Promo'),
+          duration: Duration(seconds: 2), // Duration of the SnackBar
+        ),
+      );
     }
 
     final screenSize = MediaQuery.of(context).size;
@@ -168,7 +183,7 @@ class _HomePageState extends ConsumerState<HomePage>
         backgroundColor: Colors.white70,
         appBar: AppBar(
           toolbarHeight: 60,
-          backgroundColor: Colors.black,
+          backgroundColor: Colors.green,
           title: Text(
             getGreeting(),
             style: TextStyle(color: Colors.white70),
@@ -275,7 +290,7 @@ class _HomePageState extends ConsumerState<HomePage>
                             width: screenSize.width / 3,
                             height: screenSize.height / 12,
                             decoration: BoxDecoration(
-                                color: Colors.black,
+                                color: Colors.green,
                                 borderRadius: BorderRadius.circular(8)),
                             child: TextButton(
                               onPressed: () {
@@ -292,7 +307,7 @@ class _HomePageState extends ConsumerState<HomePage>
                             width: screenSize.width / 3,
                             height: screenSize.height / 12,
                             decoration: BoxDecoration(
-                                color: Colors.black54,
+                                color: Colors.green,
                                 borderRadius: BorderRadius.circular(8)),
                             child: TextButton(
                                 onPressed: () {

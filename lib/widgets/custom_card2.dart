@@ -31,7 +31,7 @@ class CustomCard2 extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.black,
+                    color: Colors.green,
                     borderRadius: BorderRadius.circular(18),
                   ),
                   height: 50,

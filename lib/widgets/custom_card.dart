@@ -60,7 +60,7 @@ class _CustomCardState extends State<CustomCard>
                     child: CircularProgressIndicator(
                       value: _animation.value,
                       backgroundColor: Colors.grey[300],
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.black),
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
                       strokeWidth: 8.0,
                     ),
                   ),
