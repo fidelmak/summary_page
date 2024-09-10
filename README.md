@@ -14,7 +14,7 @@ The **Summary App** is a rewards tracking application where users can manage unc
 
 
 ## Download App (APK) version here 
-[Download APK](https://drive.google.com/file/d/1HmpWq4Uy8FpVb6uOp7beMd7rn84S7keL/view?usp=sharing)
+[Download APK](https://drive.google.com/file/d/17FZuM_NUAEaifLNkLastD3ocWPgZ82Bw/view?usp=drive_link)
 
 ## Installation
 
@@ -78,6 +78,18 @@ lib/
 ### 1. Home Screen
 
 The home screen shows the user's name, current reward balance, and a list of unclaimed rewards. Users can claim rewards by tapping on them.
+
+<br /> 
+<img src="https://drive.google.com/uc?export=view&id=1p5bwGPxtCMB1ponY7_Otpw9FCPAfLZif" alt="Image" width="500" height="800">
+<br />
+<br /> 
+<img src="https://drive.google.com/uc?export=view&id=1p6-7fcJR8y3lBSews7GZ6oVG6OFj7D2-" alt="Image" width="500" height="800">
+<br />
+<br /> 
+<img src="https://drive.google.com/uc?export=view&id=1p7OdZDUkKXdCioI2t8KtfBrUkauwDQRz" alt="Image" width="500" height="800">
+<br />
+
+
 
 ### 2. Reward History
 
