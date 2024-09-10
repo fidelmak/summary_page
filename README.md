@@ -14,7 +14,7 @@ The **Summary App** is a rewards tracking application where users can manage unc
 
 
 ## Download App (APK) version here 
-[Download APK](https://drive.google.com/file/d/1HmpWq4Uy8FpVb6uOp7beMd7rn84S7keL/view?usp=sharing)
+[Download APK](https://drive.google.com/file/d/17FZuM_NUAEaifLNkLastD3ocWPgZ82Bw/view?usp=drive_link)
 
 ## Installation
 
