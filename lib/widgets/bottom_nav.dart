@@ -13,7 +13,7 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Colors.white54,
+      backgroundColor: Color(0xff387F39),
       type: BottomNavigationBarType.fixed, // Ensure that all items are visible
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
@@ -34,7 +34,7 @@ class CustomBottomNavBar extends StatelessWidget {
         ),
       ],
       currentIndex: currentIndex,
-      selectedItemColor: Colors.green,
+      selectedItemColor: Color(0xffF6E96B),
       onTap: onTap,
     );
   }

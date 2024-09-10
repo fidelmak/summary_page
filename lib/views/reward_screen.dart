@@ -19,6 +19,7 @@ class _RewardScreenState extends ConsumerState<RewardScreen> {
     final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Color(0xffA2Cf78),
       body: ListView.builder(
         itemCount: unC.length, // Number of bookings
         itemBuilder: (context, index) {

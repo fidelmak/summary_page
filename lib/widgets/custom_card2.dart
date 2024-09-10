@@ -16,10 +16,10 @@ class CustomCard2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.white10, // Card background color
+      color: Colors.white, // Card background color
       elevation: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -50,7 +50,7 @@ class CustomCard2 extends StatelessWidget {
                       text1,
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.white,
+                          color: Color(0xff387F39),
                           fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 8),
@@ -58,7 +58,7 @@ class CustomCard2 extends StatelessWidget {
                       text2,
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.white,
+                        color: Color(0xff387F39),
                       ),
                     ),
                   ],
@@ -75,7 +75,7 @@ class CustomCard2 extends StatelessWidget {
                 Text(
                   name,
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xff387F39),
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),
@@ -87,8 +87,8 @@ class CustomCard2 extends StatelessWidget {
             Container(
               height: 40,
               decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.circular(18),
+                color: Color(0xff387F39),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: TextButton(
                 onPressed: press,

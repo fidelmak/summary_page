@@ -34,10 +34,10 @@ class _CustomCardState extends State<CustomCard>
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.black, // Card background color
+      color: Color(0xff387F39), // Card background color
       elevation: 5,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -46,8 +46,8 @@ class _CustomCardState extends State<CustomCard>
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18),
+                color: Colors.white70,
+                borderRadius: BorderRadius.circular(5),
               ),
               height: 80,
               width: 100,
@@ -59,8 +59,9 @@ class _CustomCardState extends State<CustomCard>
                     height: 60,
                     child: CircularProgressIndicator(
                       value: _animation.value,
-                      backgroundColor: Colors.grey[300],
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                      backgroundColor: Colors.white,
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(Color(0xff387F39)),
                       strokeWidth: 8.0,
                     ),
                   ),
@@ -82,7 +83,7 @@ class _CustomCardState extends State<CustomCard>
                   widget.text1,
                   style: TextStyle(
                       fontSize: 32,
-                      color: Colors.white,
+                      color: Color(0xffF6E96B),
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 8),
@@ -90,7 +91,7 @@ class _CustomCardState extends State<CustomCard>
                   widget.text2,
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey,
+                    color: Color(0xffBEDC74),
                   ),
                 ),
               ],

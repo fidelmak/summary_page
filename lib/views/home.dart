@@ -180,13 +180,13 @@ class _HomePageState extends ConsumerState<HomePage>
     final screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white70,
+        backgroundColor: Color(0xffA2Cf78),
         appBar: AppBar(
           toolbarHeight: 60,
-          backgroundColor: Colors.green,
+          backgroundColor: Color(0xff387F39),
           title: Text(
             getGreeting(),
-            style: TextStyle(color: Colors.white70),
+            style: TextStyle(color: Color(0xffF6E96B)),
           ),
           actions: [
             Padding(
@@ -195,7 +195,7 @@ class _HomePageState extends ConsumerState<HomePage>
                 children: [
                   Text(
                     "\$${fixed}",
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    style: TextStyle(color: Color(0xffF6E96B), fontSize: 25),
                   ),
                   Text(
                     " Current Balance",
